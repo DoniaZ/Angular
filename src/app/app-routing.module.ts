@@ -1,7 +1,33 @@
-import { NgModule } from '@angular/core';
+import { EditionUtilisateurComponent } from './pages/edition-utilisateur/edition-utilisateur.component';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccueilComponent } from './pages/accueil/accueil.component';
+import { ConnexionComponent } from './pages/connexion/connexion.component';
 
-const routes: Routes = [];
+import { Page404Component } from './pages/page404/page404.component';
+import { UserGuard } from './guards/user.guard';
+
+const routes: Routes = [
+  { path: 'accueil', component: AccueilComponent, canActivate: [UserGuard] },
+  { path: 'connexion', component: ConnexionComponent },
+  {
+    path: 'ajout-utilisateur',
+    component: EditionUtilisateurComponent,
+    canActivate: [UserGuard],
+  },
+  {
+    path: 'edit-utilisateur/:id',
+    component: EditionUtilisateurComponent,
+    canActivate: [UserGuard],
+  },
+
+  { path: '', redirectTo: 'accueil', pathMatch: 'full' },
+  { path: 'droits-insuffisants', component: Page404Component },
+
+  { path: '**', component: Page404Component },
+];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
