@@ -13,5 +13,5 @@ export interface Utilisateur {
   createdAt?: Date;
   updatedAt?: Date;
   nomImageProfil?: any;
-  ImageProfil?: any;
+  imageProfil?: any;
 }

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  serveurUrl: "environment.serverUrl + '",
+  serverUrl: 'http://localhost:8081',
 };

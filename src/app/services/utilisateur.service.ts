@@ -17,29 +17,28 @@ export class UtilisateurService {
   constructor(private http: HttpClient, private ImageService: ImageService) {}
   //creer la méthode getUtisateur qui est refraich utilisateur :fais la mise a jour de l'observable
   public getUtilisateurs() {
-
-    
     this.http
-      .get<Utilisateur[]>(environment.serveurUrl +'/utilisateurs')
-      .subscribe((utilisateurs: Utilisateur[]) =>{
+      .get<Utilisateur[]>(environment.serverUrl + '/utilisateurs')
+      .subscribe((utilisateurs: Utilisateur[]) => {
         for (let utilisateur of utilisateurs) {
           this.ImageService.chargementImageProfil(utilisateur);
-      } 
-                this._utilisateurs.next(utilisateurs);
-
-  });
-}
-  
-
-  public deleteUtilisateur(id: number): Observable<any> {
-    return this.http.delete('environment.serverUrl + '/admin/utilisateur/' + id);
-  }
-
-  public editionUtilisateur(formData: FormData): Observable<any> {
-    return this.http.post('environment.serverUrl + '/admin/utilisateur', formData);
+        }
+        this._utilisateurs.next(utilisateurs);
+      });
   }
 
   public getUtilisateur(id: number): Observable<any> {
-    return this.http.get('environment.serverUrl + '/utilisateur/' + id);
+    return this.http.get(environment.serverUrl + '/utilisateur/' + id);
+  }
+
+  public deleteUtilisateur(id: number): Observable<any> {
+    return this.http.delete(environment.serverUrl + '/admin/utilisateur/' + id);
+  }
+
+  public editionUtilisateur(formData: FormData): Observable<any> {
+    return this.http.post(
+      environment.serverUrl + '/admin/utilisateur',
+      formData
+    );
   }
 }

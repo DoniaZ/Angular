@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Route, Router } from '@angular/router';
+import { environment } from 'src/environments/environments';
+
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +20,7 @@ export class ConnexionService {
   }
 
   connexion(utilisateur: Utilisateur): Observable<string> {
-    return this.http.post('environment.serverUrl + '/connexion', utilisateur, {
+    return this.http.post(environment.serverUrl + '/connexion', utilisateur, {
       responseType: 'text',
     });
   }
