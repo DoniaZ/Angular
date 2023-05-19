@@ -20,6 +20,11 @@
           <mat-card-subtitle>
             <span [class.titre-administrator]="utilisateur.role.id == 2">
               {{ utilisateur.role.nom }}</span>
+
+             <!-- <span [class.titre-administrator]="utilisateur | isAdmin">
+              {{ (utilisateur| isAdmin)?"Admin" : "utilisateur" }}</span>
+--> 
+
 <i>
   Membre depuis {{ utilisateur.createdAt|date:"dd/MM/yyyy"}}
   Mise à jourle : {{utilisateur.updatedAt }}
@@ -29,7 +34,8 @@
         </mat-card-header>
         <img
           mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        [attr.src] ="utilisateur.ImageProfil"
+
           alt="Photo of a Shiba Inu"
         />
         <mat-card-content>

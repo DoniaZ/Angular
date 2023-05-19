@@ -22,6 +22,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { Pages403Component } from './pages/pages403/pages403.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FullnamePipe } from './pipes/fullname.pipe';
+//import { IsAdminPipe } from './pipes/is-admin.pipe';
 
 @NgModule({
   declarations: [

@@ -18,7 +18,7 @@ export class ConnexionService {
   }
 
   connexion(utilisateur: Utilisateur): Observable<string> {
-    return this.http.post('http://localhost:8081/connexion', utilisateur, {
+    return this.http.post('environment.serverUrl + '/connexion', utilisateur, {
       responseType: 'text',
     });
   }
@@ -31,11 +31,13 @@ export class ConnexionService {
       const json = window.atob(data);
       const donneesUtilisateur = JSON.parse(json);
 
+      //const listeRole = donneesUtilisateur.roles.split(',').filter((role : string) => nomRole)
       const utilisateur: Utilisateur = {
         
         email: donneesUtilisateur.sub,
         nom: donneesUtilisateur.nom,
         prenom: donneesUtilisateur.prenom,
+        //roles: donneesUtilisateur.roles;
         role: { nom: donneesUtilisateur.role },
       };
       this._utilisateurConnecte.next(utilisateur);

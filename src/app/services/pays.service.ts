@@ -10,6 +10,6 @@ export class PaysService {
   constructor(private http: HttpClient) {}
 
   public getPays(): Observable<Pays[]> {
-    return this.http.get<Pays[]>('http://localhost:8081/liste-pays');
+    return this.http.get<Pays[]>('environment.serverUrl + '/liste-pays');
   }
 }

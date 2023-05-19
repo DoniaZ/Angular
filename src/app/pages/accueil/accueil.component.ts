@@ -31,6 +31,10 @@ export class AccueilComponent {
     this.ConnexionService._utilisateurConnecte.subscribe(
       (utilisateur) =>
         (this.isAdmin = utilisateur?.role.nom == 'ROLE_ADMINISTRATEUR')
+
+
+        
+        
     );
 
     //on appel la methode raffraichir()
